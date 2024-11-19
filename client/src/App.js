@@ -6,7 +6,7 @@ import axios from 'axios'
 function App() {
   const handleTransactionSubmit = (transactionData) => {
     console.log("Payload to be sent:", transactionData)
-    axios.post("https://transcation-management-api.onrender.com/api/transactions", transactionData)
+    axios.post("/api/transactions", transactionData)
       .then((response) => {
         console.log("Transaction Created:", response.data)
       })
