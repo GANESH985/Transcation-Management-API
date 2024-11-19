@@ -12,7 +12,7 @@ const TransactionList = () => {
 
   const fetchTransactions = async () => {
     try {
-      const response = await axios.get(`/api/transactions?user_id=${userId}`)
+      const response = await axios.get(`https://transcation-management-api.onrender.com/api/transactions?user_id=${userId}`)
       setTransactions(response.data.transactions)
     } catch (error) {
       console.error("Error fetching transactions:", error)
@@ -23,7 +23,7 @@ const TransactionList = () => {
     if (!editStatus[transactionId]) return
 
     try {
-      const response = await axios.put(`/api/transactions/${transactionId}/`, {
+      const response = await axios.put(`https://transcation-management-api.onrender.com/api/transactions/${transactionId}/`, {
         status: editStatus[transactionId],
       })
       console.log("Updated transaction:", response.data)
@@ -35,7 +35,7 @@ const TransactionList = () => {
 
   const handleDelete = async (transactionId) => {
     try {
-      const response = await axios.delete(`/api/transactions/${transactionId}`)
+      const response = await axios.delete(`https://transcation-management-api.onrender.com/api/transactions/${transactionId}`)
       console.log('Transaction deleted:', response)
       fetchTransactions()
     } catch (error) {
@@ -46,7 +46,7 @@ const TransactionList = () => {
 
   const handleUpdateStatus = async (transactionId, newStatus) => {
     try {
-      await axios.put(`/api/transactions/${transactionId}`, { status: newStatus })
+      await axios.put(`https://transcation-management-api.onrender.com/api/transactions/${transactionId}`, { status: newStatus })
       fetchTransactions()
     } catch (error) {
       console.error("Error status:", error)
